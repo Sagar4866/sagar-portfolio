@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sagar Gole – Portfolio</title>
+    <!-- Font Awesome (from your original) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ========== BASE STYLES (from your style.css) ========== */
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4895ef;
+            --dark-color: #1b263b;
+            --light-color: #f8f9fa;
+            --success-color: #4cc9f0;
+            --warning-color: #f8961e;
+            --danger-color: #f94144;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-300: #dee2e6;
+            --gray-400: #ced4da;
+            --gray-500: #adb5bd;
+            --gray-600: #6c757d;
+            --gray-700: #495057;
+            --gray-800: #343a40;
+            --gray-900: #212529;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --border-radius: 0.375rem;
+            --transition: all 0.2s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background-color: var(--gray-100);
+            background-image: radial-gradient(circle at 10% 20%, rgba(67, 97, 238, 0.03) 0%, transparent 30%);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ===== PORTFOLIO SECTIONS (from your style.css) ===== */
+        .portfolio-section {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--gray-200);
+        }
+        .portfolio-section:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Hero section */
+        .hero-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.2) 0%, transparent 50%);
+            z-index: -1;
+        }
+        .hero-section .profile-image {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            background: linear-gradient(145deg, white, var(--gray-200));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            border: 4px solid rgba(255,255,255,0.5);
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+        .hero-section .profile-image:hover {
+            transform: scale(1.05);
+            border-color: white;
+        }
+        .hero-section h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .hero-section .title {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.15);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            backdrop-filter: blur(4px);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .contact-info span i {
+            margin-right: 0.5rem;
+            color: var(--accent-color);
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.2);
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            transition: var(--transition);
+            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(4px);
+        }
+        .social-links a:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* About section */
+        .about-section {
+            padding: 2rem;
+        }
+        .about-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+            border-left: 6px solid var(--primary-color);
+            padding-left: 1rem;
+            background: linear-gradient(to right, var(--gray-100), transparent);
+        }
+        .about-section p {
+            color: var(--gray-700);
+            line-height: 1.8;
+            white-space: pre-line;
+            font-size: 1.05rem;
+        }
+
+        /* Skills section */
+        .skills-section {
+            padding: 2rem;
+        }
+        .skills-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+            border-left: 6px solid var(--primary-color);
+            padding-left: 1rem;
+            background: linear-gradient(to right, var(--gray-100), transparent);
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1.2rem;
+        }
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 1.2rem 0.5rem;
+            background-color: var(--gray-100);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            border: 1px solid var(--gray-200);
+        }
+        .skill-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
+        }
+        .skill-icon {
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: var(--shadow-sm);
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        .skill-item:hover .skill-icon {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .skill-name {
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* Projects section */
+        .projects-section {
+            padding: 2rem;
+        }
+        .projects-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+            border-left: 6px solid var(--primary-color);
+            padding-left: 1rem;
+            background: linear-gradient(to right, var(--gray-100), transparent);
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.8rem;
+        }
+        .project-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid var(--gray-200);
+        }
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+        .project-image {
+            height: 180px;
+            background: linear-gradient(145deg, var(--gray-200), var(--gray-300));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 3.5rem;
+            transition: var(--transition);
+        }
+        .project-card:hover .project-image {
+            background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+        .project-content {
+            padding: 1.5rem;
+        }
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+        .project-description {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .project-tag {
+            padding: 0.25rem 0.8rem;
+            background-color: var(--gray-100);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--gray-700);
+            border: 1px solid var(--gray-300);
+        }
+
+        /* Education / Experience items */
+        .edu-item, .exp-item {
+            margin-bottom: 1.8rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px dashed var(--gray-300);
+        }
+        .edu-item:last-child, .exp-item:last-child {
+            border-bottom: none;
+        }
+        .edu-item h3, .exp-item h3 {
+            font-size: 1.3rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--dark-color);
+        }
+        .institution, .company {
+            font-weight: 500;
+            color: var(--primary-color);
+            margin: 0.2rem 0;
+        }
+        .period {
+            background: var(--gray-200);
+            padding: 0.3rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--gray-700);
+        }
+
+        /* Lists for achievements, certifications */
+        .list-items {
+            list-style: none;
+        }
+        .list-items li {
+            margin-bottom: 0.7rem;
+            padding-left: 1.8rem;
+            position: relative;
+            font-size: 1.05rem;
+        }
+        .list-items li::before {
+            content: "▹";
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.3rem;
+        }
+
+        /* Container */
+        .portfolio-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gray-500);
+            border-top: 1px solid var(--gray-200);
+            margin-top: 2rem;
+        }
+
+        /* ========== RESPONSIVE (from your responsive.css) ========== */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.2rem;
+            }
+            .contact-info {
+                flex-direction: column;
+                gap: 0.8rem;
+                padding: 1rem;
+                border-radius: 30px;
+            }
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            .skills-grid {
+                grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 576px) {
+            .portfolio-container {
+                padding: 0 1rem;
+            }
+            .hero-section {
+                padding: 3rem 1rem;
+            }
+            .profile-image {
+                width: 130px;
+                height: 130px;
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="portfolio-container">
+        <!-- Hero / Header Section -->
+        <section class="portfolio-section">
+            <div class="hero-section">
+                <div class="profile-image">
+                    <span>SG</span> <!-- Replace with <img> if you have a photo -->
+                </div>
+                <h1>Sagar Gole</h1>
+                <div class="title">Computer Science Student & Developer</div>
+                <div class="contact-info">
+                    <span><i class="fas fa-map-marker-alt"></i> Tukaram Nagar, Ambegaon BK, Pune 411046</span>
+                    <span><i class="fas fa-phone"></i> +91-9689193118</span>
+                    <span><i class="fas fa-envelope"></i> sagargole3602@gmail.com</span>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/Sagar4866" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="https://www.linkedin.com/in/sagar-gole-889411269/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Summary -->
+        <section class="portfolio-section about-section">
+            <h2>Professional Summary</h2>
+            <p>Innovative and detail-oriented Computer Science student with hands-on experience in Web Development, AI-based systems, IoT automation, and database-driven applications. Passionate about building scalable web platforms and intelligent automation systems. Strong problem-solving skills with practical experience in real-world academic and personal projects.</p>
+        </section>
+
+        <!-- Technical Skills -->
+        <section class="portfolio-section skills-section">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <!-- Programming -->
+                <div class="skill-item"><div class="skill-icon"><i class="fab fa-python"></i></div><span class="skill-name">Python</span></div>
+                <div class="skill-item"><div class="skill-icon"><i class="fas fa-code"></i></div><span class="skill-name">C</span></div>
+                <div class="skill-item"><div class="skill-icon"><i class="fab fa-java"></i></div><span class="skill-name">Java (Basic)</span></div>
+                <div class="skill-item"><div class="skill-icon"><i class="fab fa-js"></i></div><span class="skill-name">JavaScript</span></div>
+                <div class="skill-item"><div class="skill-icon"><i class="fab fa-php"></i></div><span class="skill-name">PHP</span></div>
+                <!-- Web -->
+                <div class="skill-item"><div class="skill-icon"><i class="fab fa-html5"></i></div><span class="skill-name">HTML5</span></div>
+                <div class="skill-item"><div class="skill-icon"><i class="fab fa-css3-alt"></i></div><span class="skill-name">CSS3</span></div>
+                <div class="skill-item"><div class="skill-icon"><i class="fas fa-flask"></i></div><span class="skill-name">Flask</span></div>
+                <div class="skill-item"><div class="skill-icon"><i class="fas fa-database"></i></div><span class="skill-name">MySQL</span></div>
+                <!-- Tools -->
+                <div class="skill-item"><div class="skill-icon"><i class="fab fa-bootstrap"></i></div><span class="skill-name">Bootstrap</span></div>
+                <div class="skill-item"><div class="skill-icon"><i class="fas fa-pencil-ruler"></i></div><span class="skill-name">Figma</span></div>
+                <div class="skill-item"><div class="skill-icon"><i class="fab fa-git-alt"></i></div><span class="skill-name">Git & GitHub</span></div>
+                <div class="skill-item"><div class="skill-icon"><i class="fas fa-file-excel"></i></div><span class="skill-name">MS Excel</span></div>
+                <div class="skill-item"><div class="skill-icon"><i class="fas fa-chart-pie"></i></div><span class="skill-name">Power BI</span></div>
+                <div class="skill-item"><div class="skill-icon"><i class="fas fa-code"></i></div><span class="skill-name">VS Code</span></div>
+                <div class="skill-item"><div class="skill-icon"><i class="fas fa-microchip"></i></div><span class="skill-name">Arduino</span></div>
+                <div class="skill-item"><div class="skill-icon"><i class="fas fa-raspberry-pi"></i></div><span class="skill-name">Raspberry Pi</span></div>
+                <!-- Technologies -->
+                <div class="skill-item"><div class="skill-icon"><i class="fas fa-brain"></i></div><span class="skill-name">AI/ML</span></div>
+                <div class="skill-item"><div class="skill-icon"><i class="fas fa-wifi"></i></div><span class="skill-name">IoT</span></div>
+                <div class="skill-item"><div class="skill-icon"><i class="fas fa-chart-line"></i></div><span class="skill-name">Data Analytics</span></div>
+            </div>
+        </section>
+
+        <!-- Professional Experience -->
+        <section class="portfolio-section about-section">
+            <h2>Professional Experience</h2>
+            <div class="exp-item">
+                <h3>Python Developer & Web Developer <span class="period">Dec 2024 – Present</span></h3>
+                <div class="company">Seyonix Developer (Startup)</div>
+                <p>Developing applications using Python. Building and maintaining responsive web applications. Working on API integration and database management. Collaborating in startup-based agile environment.</p>
+            </div>
+            <div class="exp-item">
+                <h3>IT Coordinator & Digital Media Executive</h3>
+                <div class="company">98th Rashtriya Marathi Sahitya Sammelan, New Delhi</div>
+                <p>Managed IT operations and technical coordination during national event. Handled digital media content and video editing. Managed official pages and online communication. Provided technical support for event management systems.</p>
+            </div>
+        </section>
+
+        <!-- Achievements -->
+        <section class="portfolio-section about-section">
+            <h2>Achievements</h2>
+            <ul class="list-items">
+                <li>First Prize – INCUTECH “Spark & Shine”</li>
+                <li>First Rank – SIH Internal Hackathon 2025</li>
+                <li>Second Rank – MAD ADDS, Sarhad Bizzfest 2024</li>
+            </ul>
+        </section>
+
+        <!-- Projects -->
+        <section class="portfolio-section projects-section">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image"><i class="fas fa-robot"></i></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Chitragupt AI Bot</h3>
+                        <p class="project-description">Multimodal AI assistant supporting voice, text, and image recognition. Integrated image recognition module for object detection.</p>
+                        <div class="project-tags"><span class="project-tag">AI</span><span class="project-tag">Python</span><span class="project-tag">OpenCV</span></div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image"><i class="fas fa-handshake"></i></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Zynext – Startup Networking</h3>
+                        <p class="project-description">Platform connecting founders, investors, mentors. Startup registration, mentor onboarding, AI mentorship.</p>
+                        <div class="project-tags"><span class="project-tag">Full Stack</span><span class="project-tag">AI</span></div>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image"><i class="fas fa-eye"></i></div>
+                    <div class="project-content">
+                        <h3 class="project-title">AI Exam Cheating Detection</h3>
+                        <p class="project-description">AI proctoring using computer vision to detect face movement and suspicious behavior in real time.</p>
+                        <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">OpenCV</span><span class="project-tag">Flask</span></div>
+                    </div>
+                </div>
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-image"><i class="fas fa-hands"></i></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Sign Language to Text & Speech</h3>
+                        <p class="project-description">Real-time gesture recognition using computer vision to convert signs to text/speech.</p>
+                        <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">OpenCV</span><span class="project-tag">ML</span></div>
+                    </div>
+                </div>
+                <!-- Project 5 -->
+                <div class="project-card">
+                    <div class="project-image"><i class="fas fa-palette"></i></div>
+                    <div class="project-content">
+                        <h3 class="project-title">ArtZone – Online Art Platform</h3>
+                        <p class="project-description">Web platform for showcasing and selling artworks. User login and product listing.</p>
+                        <div class="project-tags"><span class="project-tag">HTML/CSS</span><span class="project-tag">PHP</span><span class="project-tag">MySQL</span></div>
+                    </div>
+                </div>
+                <!-- Project 6 -->
+                <div class="project-card">
+                    <div class="project-image"><i class="fas fa-water"></i></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Aqua Equity Flow</h3>
+                        <p class="project-description">AI-based water pressure monitoring, leakage detection, real-time analytics dashboard.</p>
+                        <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">Flask</span><span class="project-tag">MySQL</span></div>
+                    </div>
+                </div>
+                <!-- Project 7 -->
+                <div class="project-card">
+                    <div class="project-image"><i class="fas fa-bolt"></i></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Automatic Electricity Saving</h3>
+                        <p class="project-description">CCTV-based presence detection to control lights/fans automatically, reducing wastage.</p>
+                        <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">OpenCV</span><span class="project-tag">IoT</span></div>
+                    </div>
+                </div>
+                <!-- Project 8 -->
+                <div class="project-card">
+                    <div class="project-image"><i class="fas fa-cloud-rain"></i></div>
+                    <div class="project-content">
+                        <h3 class="project-title">IoT Rain Protection System</h3>
+                        <p class="project-description">Arduino + rain sensor automatically moves clothes under shelter when rain detected.</p>
+                        <div class="project-tags"><span class="project-tag">Arduino</span><span class="project-tag">IoT</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section class="portfolio-section about-section">
+            <h2>Education</h2>
+            <div class="edu-item">
+                <h3>B.Sc. Computer Science <span class="period">2023 – 2026 (Expected)</span></h3>
+                <div class="institution">Sarhad College of ACS, Pune</div>
+                <p>CGPA (Till Sem 4): 9.14 / 10</p>
+            </div>
+            <div class="edu-item">
+                <h3>HSC (12th Grade) <span class="period">2023</span></h3>
+                <p>73.50%</p>
+            </div>
+            <div class="edu-item">
+                <h3>SSC (10th Grade) <span class="period">2021</span></h3>
+                <p>92.80%</p>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="portfolio-section about-section">
+            <h2>Certifications</h2>
+            <ul class="list-items">
+                <li>Diploma in Web Development – 12 Months</li>
+                <li>JavaScript Course – 3 Months</li>
+                <li>HTML Course – 1 Month</li>
+                <li>NLP, ChatGPT & Prompt Engineering – EXCELR (30 Hours)</li>
+                <li>Basic to Advanced MS-Excel – 1 Month</li>
+                <li>Ethical Hacking Masterclass – Nikistian Media Pvt. Ltd.</li>
+                <li>Bootcamp: Hotstar Clone – AWS Community Builders</li>
+                <li>Magic Bus – Connect to Work Programme</li>
+                <li>Elementary & Intermediate Drawing Grade Examinations – Certified</li>
+                <li>Certified Yoga Course</li>
+            </ul>
+        </section>
+
+        <!-- Strengths -->
+        <section class="portfolio-section about-section">
+            <h2>Strengths</h2>
+            <ul class="list-items">
+                <li>Strong analytical thinking</li>
+                <li>Fast learner & quick technology adopter</li>
+                <li>Comfortable working with AI tools & modern frameworks</li>
+                <li>Project-oriented mindset</li>
+                <li>Leadership & initiative-taking</li>
+                <li>Adaptive to new technologies and development trends</li>
+            </ul>
+        </section>
+
+        <!-- Interests -->
+        <section class="portfolio-section about-section">
+            <h2>Interests</h2>
+            <ul class="list-items">
+                <li>Trekking & Outdoor Exploration</li>
+                <li>Reading (Self-Development & Technology)</li>
+            </ul>
+        </section>
+
+        <!-- Career Objective -->
+        <section class="portfolio-section about-section">
+            <h2>Career Objective</h2>
+            <p>To secure a challenging position in a growth-oriented organization where I can apply my technical knowledge, enhance my skills, and contribute to innovative software solutions.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Sagar Gole. Built with PortfolioPro styles.</p>
+    </footer>
+</body>
+</html>
